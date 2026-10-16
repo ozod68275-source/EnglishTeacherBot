@@ -150,7 +150,7 @@ The substation is operating normally.
 
 Podstansiya normal ishlamoqda.
 """]
-bot.send_message(chat_id, text)
+
 grammar_topics = [...]
 
 @bot.message_handler(commands=['start'])
