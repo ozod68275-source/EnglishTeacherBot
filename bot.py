@@ -1,9 +1,9 @@
 import telebot
 from telebot import types
 import random
+import os
 from datetime import date
-TOKEN = "8844823920:AAF2yka_meFlXKoRWsxPjXIiKi0dr4srOws"
-
+TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 user_answers = {}
 user_scores = {}
