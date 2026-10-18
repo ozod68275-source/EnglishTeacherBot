@@ -2,8 +2,8 @@ import telebot
 from telebot import types
 import random
 from datetime import date
-TOKEN = "8844823920:AAF2yka_meFlXKoRWsxPjXIiKi0dr4srOws"
-
+import os
+TOKEN = os.getenv("BOT_TOKEN")
 bot = telebot.TeleBot(TOKEN)
 user_answers = {}
 user_scores = {}
@@ -163,10 +163,10 @@ def start(message):
     btn3 = types.KeyboardButton("📝 Quiz")
     btn4 = types.KeyboardButton("📖 Grammar")
     btn5 = types.KeyboardButton("💎 Premium")
-
+    btn6 = types.KeyboardButton("🤖 AI Teacher")
     markup.row(btn1, btn2)
     markup.row(btn3, btn4)
-    markup.row(btn5)
+    markup.row(btn5, btn6)
 
     bot.send_message(
         message.chat.id,
@@ -603,20 +603,24 @@ Reply with A, B, C or D.
 
 @bot.message_handler(commands=['premium'])
 def premium(message):
-    bot.send_message(
-        message.chat.id,
-        """
-💎 Premium
 
-✅ 30 words per day
-✅ IELTS Vocabulary
-✅ Business English
-✅ Technical English
-✅ AI Teacher
-
-49,000 UZS / month
-"""
+    markup = types.ReplyKeyboardMarkup(
+        resize_keyboard=True
     )
+
+    btn1 = types.KeyboardButton("⭐ Basic")
+    btn2 = types.KeyboardButton("🚀 Pro")
+    btn3 = types.KeyboardButton("⚡ Engineer Pro")
+
+    markup.row(btn1, btn2)
+    markup.row(btn3)
+
+bot.send_message(
+        message.chat.id,
+        "💎 Choose a Premium Plan:",
+        reply_markup=markup
+    )
+
 @bot.message_handler(func=lambda m: m.text in ["A", "B", "C", "D"])
 def check_answer(message):
 
