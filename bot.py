@@ -614,7 +614,7 @@ def premium(message):
     markup.row(btn1, btn2)
     markup.row(btn3)
 
-bot.send_message(
+    bot.send_message(
         message.chat.id,
         "💎 Choose a Premium Plan:",
         reply_markup=markup
