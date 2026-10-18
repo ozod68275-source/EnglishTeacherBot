@@ -736,7 +736,6 @@ def buttons(message):
     elif message.text == "💎 Premium":
         premium(message)
 bot.infinity_polling()
-=======
 import telebot
 from telebot import types
 import random
